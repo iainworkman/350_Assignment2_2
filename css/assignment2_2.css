@@ -1,0 +1,56 @@
+.glyphicon {
+    color: #9D9D9D;
+}
+
+.well {
+    background-color: #1C383F;
+
+    color: whitesmoke;
+    border-color: #1C383F;
+    border-radius: 15px;
+}
+
+.well:hover {
+    background-color: #004d40;
+    cursor:pointer;
+}
+
+.modal-content {
+    background-color: #1C383F; 
+    border-color: #1C383F;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAJ0lEQVQIW2NkwA7+M2IR/w8UY0SXAAuCFCNLwAWRJVAEYRIYgiAJALsgBgYbCawOAAAAAElFTkSuQmCC");
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-footer {
+    border-top: none;   
+}
+
+.modal-title {
+    font-size: x-large;
+}
+
+.btn-default {
+    background-color: #222;
+    color: white;
+    border-color: black;
+}
+
+.btn-default:hover {
+    background-color: black;
+    color: white;
+    border-color: gray;
+    
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    font-family: 'Roboto', sans-serif;
+    padding-top: 65px;
+    padding-bottom: 20px;
+    background-color: #222;
+    color: #9D9D9D;
+}
