@@ -24,13 +24,17 @@ class Contact {
         $this->birthday_ = $birthday;
         $this->date_ = $date;
         $this->address_ = new Address($buildingNumber, $streetName, $townName, 
-                $region, $company, $postCode);
+                $region, $country, $postCode);
         $this->hasChanged_ = false;
     }
 
-    // Public Functions
+    // Public Functions  
     function hasChanged() {
         return $this->hasChanged_;
+    }
+    
+        function getContactId() {
+        return $this->contactId_;
     }
     
     function getFirstName() {

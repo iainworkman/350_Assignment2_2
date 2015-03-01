@@ -42,7 +42,7 @@
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                     </button>
                     <a class="navbar-brand" href="#">Contacts</a>
-                    <button type="button" class="btn btn-success" style="margin-top:7px" data-toggle="modal" data-target="#DetailsModal">
+                    <button type="button" class="btn btn-success" style="margin-top:7px" data-toggle="modal" data-target="#add-contact-modal">
                         <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"  style="color:white;"></span>
                     </button>
                 </div>
@@ -57,103 +57,103 @@
         </nav>
 
         <!-- Modal -->
-        <div id="DetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div id="add-contact-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="add-modal-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:white;">&times;  </button>
-                        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+                        <h4 class="modal-title" id="add-modal-label">Add Contact</h4>
 
                     </div>
-                    <div id="contactModal" class="modal-body" style="max-height: 65vh;">
+                    <div id="add-contact-modal-body" class="modal-body" style="max-height: 65vh;">
                         <form class="form-horizontal">
                             <div class="form-group">
-                                <label for="firstNameInput" class="col-sm-3 control-label">First Name</label>
+                                <label for="add-contact-first-name" class="col-sm-3 control-label">First Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" />
+                                    <input type="text" class="form-control" id="add-contact-first-name" placeholder="First Name" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="lastNameInput" class="col-sm-3 control-label">Last Name</label>
+                                <label for="add-contact-last-name" class="col-sm-3 control-label">Last Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name"/>
+                                    <input type="text" class="form-control" id="add-contact-last-name" placeholder="Last Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="companyInput" class="col-sm-3 control-label">Company</label>
+                                <label for="add-contact-company" class="col-sm-3 control-label">Company</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="companyInput" placeholder="Company"/>
+                                    <input type="text" class="form-control" id="add-contact-company" placeholder="Company"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="phoneInput" class="col-sm-3 control-label">Phone Number</label>
+                                <label for="add-contact-phone" class="col-sm-3 control-label">Phone Number</label>
                                 <div class="col-sm-9">
-                                    <input type="tel" class="form-control" id="phoneInput" placeholder="Phone Number"/>
+                                    <input type="tel" class="form-control" id="add-contact-phone" placeholder="Phone Number"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="emailInput" class="col-sm-3 control-label">Email</label>
+                                <label for="add-contact-email" class="col-sm-3 control-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" class="form-control" id="emailInput" placeholder="Email"/>
+                                    <input type="email" class="form-control" id="add-contact-email" placeholder="Email"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="urlInput" class="col-sm-3 control-label">URL</label>
+                                <label for="add-contact-url" class="col-sm-3 control-label">URL</label>
                                 <div class="col-sm-9">
-                                    <input type="url" class="form-control" id="urlInput" placeholder="Url"/>
+                                    <input type="url" class="form-control" id="add-contact-url" placeholder="Url"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="birthdayInput" class="col-sm-3 control-label">Birthday</label>
+                                <label for="add-contact-birthday" class="col-sm-3 control-label">Birthday</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" id="birthdayInput" />
+                                    <input type="date" class="form-control" id="add-contact-birthday" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="dateInput" class="col-sm-3 control-label">Date</label>
+                                <label for="add-contact-date" class="col-sm-3 control-label">Date</label>
                                 <div class="col-sm-9">
-                                    <input type="date" class="form-control" id="dateInput" />
+                                    <input type="date" class="form-control" id="add-contact-date" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="buildingNumberInput" class="col-sm-3 control-label">Building #</label>
+                                <label for="add-contact-buidling-number" class="col-sm-3 control-label">Building #</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="buildingNumberInput" placeholder="House or Building Number"/>
+                                    <input type="text" class="form-control" id="add-contact-buidling-number" placeholder="House or Building Number"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="streetNameInput" class="col-sm-3 control-label">Street Name</label>
+                                <label for="add-contact-street-name" class="col-sm-3 control-label">Street Name</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="streetNameInput" placeholder="Street Name"/>
+                                    <input type="text" class="form-control" id="add-contact-street-name" placeholder="Street Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="townNameInput" class="col-sm-3 control-label">Town/City</label>
+                                <label for="add-contact-town-name" class="col-sm-3 control-label">Town/City</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="townNameInput" placeholder="Town/City"/>
+                                    <input type="text" class="form-control" id="add-contact-town-name" placeholder="Town/City"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="regionInput" class="col-sm-3 control-label">Region</label>
+                                <label for="add-contact-region" class="col-sm-3 control-label">Region</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="regionInput" placeholder="Region or Province"/>
+                                    <input type="text" class="form-control" id="add-contact-region" placeholder="Region or Province"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="countryInput" class="col-sm-3 control-label">Country</label>
+                                <label for="add-contact-country" class="col-sm-3 control-label">Country</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="countryInput" placeholder="Country"/>
+                                    <input type="text" class="form-control" id="add-contact-country" placeholder="Country"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="postCodeInput" class="col-sm-3 control-label">Post Code</label>
+                                <label for="add-contact-post-code" class="col-sm-3 control-label">Post Code</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="postCodeInput" placeholder="Postal Code"/>
+                                    <input type="text" class="form-control" id="add-contact-post-code" placeholder="Postal Code"/>
                                 </div>
                             </div>
                             <div class="form-group" style="padding-left:30px; padding-right:20px;">
-                                <label for="dateInput" class="control-label">Notes</label>
-                                <textarea id="notesInput" class="form-control" rows="3"></textarea>                                   
+                                <label for="add-contact-notes" class="control-label">Notes</label>
+                                <textarea id="add-contact-notes" class="form-control" rows="3"></textarea>                                   
                             </div>                                
                         </form>
                     </div>
@@ -176,19 +176,19 @@
         <div id="contactList" class="container" style="max-height:85vh;">
             <?php
             require_once 'ContactsFactory.php';
+            require_once 'ContactPage_code.php';
             $dsn = "mysql:host=lovett.usask.ca;dbname=cmpt350_ipw969";
             $username = "cmpt350_ipw969";
             $password = "ufsan8x16h";
             try {
                 $db = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                 $contacts = ContactsFactory::getContacts($db);
-                foreach($contacts as $current) {
-                    echo '<div class="well" data-toggle="modal" data-target="#DetailsModal" onclick="populateModal();">';
-                    echo '<h1><strong>' . $current->getFirstName() . '</strong> ' . $current->getLastName() . '</h1>';
-                    echo '</div>';
+                foreach ($contacts as $current) {
+                    buildWell($current->getContactId(), $current->getFirstName(), $current->getLastName());
+                    buildModal($current);
                 }
             } catch (PDOException $e) {
-                echo '<div>' . $e->getMessage() . '</div>'; 
+                echo '<div>' . $e->getMessage() . '</div>';
             }
             ?>
         </div>
@@ -210,7 +210,7 @@
             (function ($) {
                 $(window).load(function () {
 
-                    $("#contactModal").mCustomScrollbar({
+                    $(".modal-body").mCustomScrollbar({
                         theme: "light-thin",
                         scrollInertia: 100
                     });

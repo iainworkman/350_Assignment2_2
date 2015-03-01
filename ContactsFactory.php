@@ -1,19 +1,19 @@
 <?php
 
 require_once 'Contact.php';
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Class which loads an array of contacts from the database
  *
  * @author Iain Workman 11139430 ipw969
  */
 class ContactsFactory {
-
+    
+    /**
+     * Returns an array of contacts which currently exist in the database, 
+     * indexed by their contact id.
+     * @param type $db
+     * @return \Contact
+     */
     public static function getContacts($db) {
 
         $returnArray = [];
