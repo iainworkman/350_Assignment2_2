@@ -33,5 +33,23 @@ class ContactsFactory {
         }
         return $returnArray;
     }
+    
+    public static function getContact($db, $contactId) {
+                $query = $db->prepare('SELECT * FROM t_contacts WHERE tc_contactid = ? ORDER BY tc_lastname');
+        $query->bindParam(1, $contactId, PDO::PARAM_INT);
+        
+        $query->execute();
+        $fetch = $query->fetchAll();
+        foreach ($fetch as $row) {
+            return new Contact($row['tc_contactid'], 
+                    $row['tc_firstname'], $row['tc_lastname'],
+                    $row['tc_company'], $row['tc_phone'], $row['tc_email'], 
+                    $row['tc_url'], $row['tc_building_number'], 
+                    $row['tc_streetname'], $row['tc_townname'], 
+                    $row['tc_region'], $row['tc_country'], 
+                    $row['tc_postcode'], $row['tc_birthday'], $row['tc_date']);
+        }
+        return null;
+    }
 
 }
