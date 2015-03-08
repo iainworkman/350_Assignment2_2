@@ -62,7 +62,7 @@
         echo                    '<div class="form-group">';
         echo                        '<label for="'.$elementId.'-buidling-number" class="col-sm-3 control-label">Building #</label>';
         echo                        '<div class="col-sm-9">';
-        echo                            '<input type="text" class="form-control" id="'.$elementId.'-buidling-number" placeholder="House or Building Number" value="'.$contact->getAddress()->getBuildingNumber().'"/>';
+        echo                            '<input type="text" class="form-control" id="'.$elementId.'-building-number" placeholder="House or Building Number" value="'.$contact->getAddress()->getBuildingNumber().'"/>';
         echo                        '</div>';
         echo                    '</div>';
         echo                    '<div class="form-group">';

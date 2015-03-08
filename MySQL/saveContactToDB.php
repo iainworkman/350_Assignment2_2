@@ -18,12 +18,23 @@ echo "street name:".$_POST['streetName']."\n";
 echo "postal code:".$_POST['postalCode']."\n";
 echo "Transaction Type:".$_POST['transactionType']."\n";
 */
-
-$contact = new Contact(null, $_POST['firstName'], $_POST['lastName'],
+if ($_POST['transactionType'] == "update")
+{
+	$contact = new Contact($_POST['contactId'], $_POST['firstName'], $_POST['lastName'],
            $_POST['company'], $_POST['phoneNumber'], $_POST['email'], $_POST['url'], 
             $_POST['buildingNumber'], $_POST['streetName'], $_POST['town'], 
             $_POST['region'], $_POST['country'], $_POST['postalCode'], $_POST['birthday'], 
             $_POST['date']);
+}
+else if ($_POST['transactionType'] == "insert")
+{
+	$contact = new Contact(null, $_POST['firstName'], $_POST['lastName'],
+           $_POST['company'], $_POST['phoneNumber'], $_POST['email'], $_POST['url'], 
+            $_POST['buildingNumber'], $_POST['streetName'], $_POST['town'], 
+            $_POST['region'], $_POST['country'], $_POST['postalCode'], $_POST['birthday'], 
+            $_POST['date']);
+}
+
 			
 			session_start();
 			$dsn = $_SESSION["serverName"].";".$_SESSION['database'];
@@ -42,6 +53,7 @@ $contact = new Contact(null, $_POST['firstName'], $_POST['lastName'],
 				}
 				else if ($_POST['transactionType'] == "update")
 				{
+					
 					$errorMessage = $errorMessage."\n".contactsFactory::updateContact($conn,$contact);
 				}
 				

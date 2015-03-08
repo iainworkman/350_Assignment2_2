@@ -128,7 +128,6 @@ class ContactsFactory {
 		try
 		{
 			
-		#validateSave($db, $contact);
 		$query = "UPDATE t_contacts set 
 		tc_firstname = '".$contact->getFirstName()."',
 		 tc_lastname = '".$contact->getLastName()."',
@@ -149,7 +148,7 @@ class ContactsFactory {
 		 
 		 tc_contactid = ".$contact->getContactId().";";
 		 
-		
+		echo "contact id:".$contact->getContactId()."\n";
 		$type = $_SESSION['type'];	
 		if ($type == "MySQL") //the database we are executing on is of type MySQL.
 		{

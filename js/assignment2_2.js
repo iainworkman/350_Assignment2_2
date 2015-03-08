@@ -33,22 +33,22 @@ function populateModal() {
 	}
 	
 	/**Gathers all of the input from the input fields and returns it for use in a PostRequest.*/
-	function gatherInput()
+	function gatherInput(frontVariable)
 	{
-				var firstName = document.getElementById("add-contact-first-name").value;
-				var lastName = document.getElementById("add-contact-last-name").value;
-				var company = document.getElementById("add-contact-company").value;
-				var phoneNumber = document.getElementById("add-contact-phone").value;
-				var email = document.getElementById("add-contact-email").value;
-				var url = document.getElementById("add-contact-url").value;
-				var birthday = document.getElementById("add-contact-birthday").value;
-				var date = document.getElementById("add-contact-date").value;
-				var buildingNumber = document.getElementById("add-contact-building-number").value;
-				var streetName = document.getElementById("add-contact-street-name").value;
-				var town = document.getElementById("add-contact-town-name").value;
-				var region = document.getElementById("add-contact-region").value;
-				var country = document.getElementById("add-contact-country").value;
-				var postalCode = document.getElementById("add-contact-post-code").value;
+				var firstName = document.getElementById(frontVariable + "first-name").value;
+				var lastName = document.getElementById(frontVariable + "last-name").value;
+				var company = document.getElementById(frontVariable + "company").value;
+				var phoneNumber = document.getElementById(frontVariable + "phone").value;
+				var email = document.getElementById(frontVariable + "email").value;
+				var url = document.getElementById(frontVariable + "url").value;
+				var birthday = document.getElementById(frontVariable + "birthday").value;
+				var date = document.getElementById(frontVariable + "date").value;
+				var buildingNumber = document.getElementById(frontVariable + "building-number").value;
+				var streetName = document.getElementById(frontVariable + "street-name").value;
+				var town = document.getElementById(frontVariable + "town-name").value;
+				var region = document.getElementById(frontVariable + "region").value;
+				var country = document.getElementById(frontVariable + "country").value;
+				var postalCode = document.getElementById(frontVariable + "post-code").value;
 
 				
 				var params = 

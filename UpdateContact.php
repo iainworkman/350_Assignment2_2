@@ -57,8 +57,9 @@
 		<script>
 			function updateContact()
 			{
-				var params = gatherInput();
+				var params = gatherInput("update-contact-");
 				params = params + "&transactionType=update";
+				params = params + "&contactId=" + <?php echo $contactId ?>;
 				var callback = function(responseText)
 				{
 					alert(responseText);

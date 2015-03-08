@@ -152,7 +152,7 @@ require_once 'Contact.php';
 			function saveContact()
 			{		
 			
-				var params = gatherInput();
+				var params = gatherInput("add-contact-");
 				params = params + "&transactionType=insert";
 				var callback = function(responseText)
 				{
