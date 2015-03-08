@@ -72,9 +72,10 @@
                 <?php
                 require_once 'ContactsFactory.php';
                 require_once 'ContactPage_code.php';
-                $dsn = "mysql:host=lovett.usask.ca;dbname=cmpt350_ipw969";
-                $username = "cmpt350_ipw969";
-                $password = "ufsan8x16h";
+				session_start();
+                $dsn = $_SESSION['serverName'].";".$_SESSION['database'];
+                $username = $_SESSION['userName'];
+                $password = $_SESSION['password'];
                 try {
                     $db = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                     $contacts = ContactsFactory::getContacts($db);

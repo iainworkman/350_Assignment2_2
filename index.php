@@ -11,5 +11,6 @@ and open the template in the editor.
     </head>
     <body>
         <a href="MySQL/connectToMySQL.php">MySql Version</a>
+		<a href="MySQL/connectToAzure.php">Azure Version</a>
     </body>
 </html>
