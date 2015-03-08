@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+		<?php
+		#Check to make sure the session variables came accross ok.
+		/*session_start();
+			echo "<br/>".$_SESSION["serverName"]."<br/>";
+			echo $_SESSION["userName"]."</br>";
+			echo $_SESSION["password"]."</br>";
+			echo $_SESSION["database"]."</br>";
+			echo $_SESSION["type"]."</br>";
+			*/
+		?>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -102,6 +112,8 @@
                 });
             })(jQuery);
         </script>
+		
+
     </body>
 </html>
 

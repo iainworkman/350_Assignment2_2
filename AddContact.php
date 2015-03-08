@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require_once 'Contact.php';
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -95,7 +98,7 @@
                                 <div class="form-group">
                                     <label for="add-contact-buidling-number" class="col-sm-3 control-label">Building #</label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="add-contact-buidling-number" placeholder="House or Building Number"/>
+                                        <input type="text" class="form-control" id="add-contact-building-number" placeholder="House or Building Number"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -136,21 +139,38 @@
                         </div>
                         <div class="modal-footer">
                             <a class="btn btn-primary" href="ContactPage.php">Close</a>
-                            <button type="button" class="btn btn-success">Add Contact</button>
+                            <button type="button" class="btn btn-success" onClick = "saveContact()">Add Contact</button>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- End Modal -->
         </div>
-        <?php
-// put your code here
-        ?>
+		
+		<script>
+		/**Operation to save the contact. Takes in information from all of the fields and send it off to the server for validation and saving**/
+			function saveContact()
+			{		
+			
+				var params = gatherInput();
+				params = params + "&transactionType=insert";
+				var callback = function(responseText)
+				{
+					alert(responseText);
+					window.location.assign('ContactPage.php');
+				}
+				
+				alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
+				
+		
+			}			
+		</script>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		 <script src="js/assignment2_2.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/docs.min.js"></script>
         <!-- custom scrollbar plugin -->

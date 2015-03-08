@@ -10,6 +10,6 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="ContactPage.php">MySql Version</a>
+        <a href="MySQL/connectToMySQL.php">MySql Version</a>
     </body>
 </html>

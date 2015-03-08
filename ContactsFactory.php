@@ -52,4 +52,153 @@ class ContactsFactory {
         return null;
     }
 
+	
+	/*Saves the given contact to the database.
+	$contact: The contact to save to the database.
+	$db: The database to save the contact to.
+	return: null if no error occurred, else a string containing the error. 
+	TODO: Validate input somehow. Do with a validate contact function?
+		: Ensure there is not already someone in the databse with the same information?
+	*/
+	public static function saveContact($db, $contact)
+	{
+		try
+		{
+			
+		//Also need to update the contact's contactID.
+		#validateSave($db, $contact);
+		$query = "insert into t_contacts(
+		tc_firstname,
+		tc_lastname,
+		tc_company,
+		tc_phone,
+		tc_email,
+		tc_url,
+		tc_building_number,
+		tc_streetname,
+		tc_townname,
+		tc_region,
+		tc_country,
+		tc_postcode,
+		tc_birthday,
+		tc_date
+		)
+		
+		VALUES(
+		'".$contact->getFirstName()."',
+		'".$contact->getLastName()."',
+		'".$contact->getCompany()."',
+		'".$contact->getPhone()."',
+		'".$contact->getEmail()."',
+		'".$contact->getUrl()."',
+		'".$contact->getAddress()->getBuildingNumber()."',
+		'".$contact->getAddress()->getStreetName()."',
+		'".$contact->getAddress()->getTownName()."',
+		'".$contact->getAddress()->getRegion()."',
+		'".$contact->getAddress()->getCountry()."',
+		'".$contact->getAddress()->getPostCode()."',
+		'".$contact->getBirthday()."',
+		'".$contact->getDate()."');
+		";
+		
+		$type = $_SESSION['type'];	
+		if ($type == "MySQL") //the database we are executing on is of type MySQL.
+		{
+				
+		}
+		else if ($type == "Azure")
+		{
+			
+		}
+		$statement = $db->prepare($query);
+		$statement->execute();
+		
+		return null;
+		}
+		catch (Exception $e)
+		{
+			return $e->getMessage();
+		}		
+	}
+	
+	/**Used to update the given contact via the given id. \
+	**/
+	public static function updateContact($db, $contact)
+	{
+		try
+		{
+			
+		#validateSave($db, $contact);
+		$query = "UPDATE t_contacts set 
+		tc_firstname = '".$contact->getFirstName()."',
+		 tc_lastname = '".$contact->getLastName()."',
+		 tc_company = '".$contact->getCompany()."',
+		 tc_phone = '".$contact->getPhone()."',
+		 tc_email = '".$contact->getEmail()."',
+		 tc_url = '".$contact->getUrl()."',
+		 tc_building_number = '".$contact->getAddress()->getBuildingNumber()."',
+		 tc_streetname = '".$contact->getAddress()->getStreetName()."',
+		 tc_townname = '".$contact->getAddress()->getTownName()."',
+		 tc_region = '".$contact->getAddress()->getRegion()."',
+		 tc_country = '".$contact->getAddress()->getCountry()."',
+		 tc_postcode = '".$contact->getAddress()->getPostCode()."',
+		 tc_birthday = '".$contact->getBirthday()."',
+		 tc_date = '".$contact->getDate()."'
+		 
+		 WHERE 
+		 
+		 tc_contactid = ".$contact->getContactId().";";
+		 
+		
+		$type = $_SESSION['type'];	
+		if ($type == "MySQL") //the database we are executing on is of type MySQL.
+		{
+				
+		}
+		else if ($type == "Azure")
+		{
+			
+		}
+		$statement = $db->prepare($query);
+		$statement->execute();
+		
+		return null;
+		}
+		catch (Exception $e)
+		{
+			return $e->getMessage();
+		}		
+	}
+	
+	/**Used to delete the contact with the given id.*/
+	public static function deleteContact($db, $contactId)
+	{
+		try
+		{
+			
+		#validateSave($db, $contact);
+		$query = "DELETE FROM t_contacts WHERE tc_contactId = ".$contactId.";";
+		 
+		 
+		
+		$type = $_SESSION['type'];	
+		if ($type == "MySQL") //the database we are executing on is of type MySQL.
+		{
+				
+		}
+		else if ($type == "Azure")
+		{
+			
+		}
+		$statement = $db->prepare($query);
+		$statement->execute();
+		
+		return null;
+		}
+		catch (Exception $e)
+		{
+			return $e->getMessage();
+		}		
+	}
+	
 }

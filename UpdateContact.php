@@ -53,7 +53,20 @@
 
 
         </div>
-
+		
+		<script>
+			function updateContact()
+			{
+				var params = gatherInput();
+				params = params + "&transactionType=update";
+				var callback = function(responseText)
+				{
+					alert(responseText);
+					window.location.assign('ContactPage.php');
+				}
+				alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
+			}
+		</script>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

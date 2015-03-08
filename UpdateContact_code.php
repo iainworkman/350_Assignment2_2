@@ -103,7 +103,7 @@
         echo            '</div>';
         echo            '<div class="modal-footer">';
         echo                '<a class="btn btn-primary" href="ContactPage.php">Close</a>';
-        echo                '<button type="button" class="btn btn-success">Save changes</button>';
+        echo                '<button type="button" class="btn btn-success" onClick="updateContact()">Save changes</button>';
         echo            '</div>';
         echo        '</div>';
         echo    '</div>';
