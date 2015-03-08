@@ -12,8 +12,8 @@ class Contact {
     function Contact($contactId = -1, $firstName = "", $lastName = "",
             $company = "", $phone = "", $email = "", $url = "", 
             $buildingNumber = "", $streetName = "", $townName = "", 
-            $region = "", $country = "", $postCode = "", $birthday = null, 
-            $date=null) {
+            $region = "", $country = "", $postCode = "", $birthday = "", 
+            $date="") {
         $this->contactId_ = $contactId;
         $this->firstName_ = $firstName;
         $this->lastName_ = $lastName;

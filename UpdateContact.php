@@ -66,7 +66,7 @@
 					alert(responseText);
 					window.location.assign('ContactPage.php');
 				}
-				alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
+				sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback);
 			}
 		</script>
 

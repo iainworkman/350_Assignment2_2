@@ -9,9 +9,9 @@ class Address {
 
     // Constructor
     function Address($buildingNumber, $streetName, $townName, $region, $country, $postCode) {
-        $this->buildingNumber = $buildingNumber;
+        $this->buildingNumber_ = $buildingNumber;
         $this->streetName_ = $streetName;
-        $this->townName_ = $townName;
+        $this->town_ = $townName;
         $this->region_ = $region;
         $this->country_ = $country;
         $this->postCode_ = $postCode;

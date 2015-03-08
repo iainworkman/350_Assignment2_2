@@ -160,7 +160,7 @@ require_once 'Contact.php';
 					window.location.assign('ContactPage.php');
 				}
 				
-				alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
+				sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback);
 				
 		
 			}			

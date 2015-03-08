@@ -1,7 +1,13 @@
 <?php
+/**This is where the magic happens. This page recieved a request, decides what it is,
+has the ContactsFactory do some fancy validation, then selects the task to accomplish.
+This file also lists plenty of debugging information.*/
+
 require_once 'C:/xampp/htdocs/350ass2_2/Contact.php';
 require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
+
 /*
+//debugging.
 echo "first name: ".$_POST['firstName']."\n";
 echo "last name:".$_POST['lastName']."\n";
 echo "phone number:".$_POST['phoneNumber']."\n";
@@ -34,27 +40,30 @@ else if ($_POST['transactionType'] == "insert")
             $_POST['region'], $_POST['country'], $_POST['postalCode'], $_POST['birthday'], 
             $_POST['date']);
 }
-
-			
+/*
+//debugging
+echo var_dump($contact);
+*/			
 			session_start();
 			$dsn = $_SESSION["serverName"].";".$_SESSION['database'];
             $username = $_SESSION["userName"];
             $password = $_SESSION['password'];
-			$errorMessage = "";
+			$errorMessage = null;
 			$error = false;
 			$conn;
 			try 
 			{
-				
+				$possibleError = ContactsFactory::validateContact($contact);
+
+	
                 $conn = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 				if ($_POST['transactionType'] == "insert")
 				{
-					$errorMessage = $errorMessage."\n".ContactsFactory::saveContact($conn, $contact);
+					$errorMessage = ContactsFactory::saveContact($conn, $contact);
 				}
 				else if ($_POST['transactionType'] == "update")
-				{
-					
-					$errorMessage = $errorMessage."\n".contactsFactory::updateContact($conn,$contact);
+				{					
+					$errorMessage = contactsFactory::updateContact($conn,$contact);
 				}
 				
             } 
@@ -66,13 +75,13 @@ else if ($_POST['transactionType'] == "insert")
 			
 
 		
-if (!$error)
+if (!$error  && $errorMessage == null && $possibleError == null)
 {
 	echo "Successfully saved contact to database.";
 }
 else
 {
-	echo "failed to save the contact to the database with the following errors.: ".$errorMessage;
+	echo "failed to save the contact to the database with the following errors.: ".$errorMessage."\n".$possibleError;
 }
 
 ?>

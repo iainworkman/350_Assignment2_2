@@ -1,8 +1,18 @@
 <?php
 require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
 
+
+
 	$contactId = $_GET['contactId'];
-	session_start();
+	
+	//Validate the id on the server side to make sure it isn't erroneous. 
+	if (! gettype($contactId) == 'integer')
+	{
+		echo "The given contact id is not of an integer type. This means it may contain characters, or other erroneous code.";
+	}
+	else
+	{
+			session_start();
 			$dsn = $_SESSION["serverName"].";".$_SESSION['database'];
             $username = $_SESSION["userName"];
             $password = $_SESSION['password'];
@@ -22,14 +32,16 @@ require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
 			
 
 		
-if (!$error)
-{
-	echo "Successfully Removed The Contact From the Database.";
-}
-else
-{
-	echo "failed to save the contact to the database with the following errors.: ".$errorMessage;
-}
+			if (!$error)
+			{
+				echo "Successfully Removed The Contact From the Database.";
+			}
+			else
+			{
+				echo "failed to save the contact to the database with the following errors.: ".$errorMessage;
+			}
 
-header("Location: ../ContactPage.php"); //redirect the browser to the beginning page.
+			header("Location: ../ContactPage.php"); //redirect the browser to the beginning page.
+	}
+
 ?>
