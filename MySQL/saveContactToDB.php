@@ -1,6 +1,6 @@
 <?php
-require_once 'C:/xampp/htdocs/350ass2_2/Contact.php';
-require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
+require_once '../Contact.php';
+require_once '../ContactsFactory.php';
 /*
 echo "first name: ".$_POST['firstName']."\n";
 echo "last name:".$_POST['lastName']."\n";

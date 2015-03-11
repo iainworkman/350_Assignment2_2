@@ -1,5 +1,5 @@
 <?php
-require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
+require_once '../ContactsFactory.php';
 
 	$contactId = $_GET['contactId'];
 	session_start();

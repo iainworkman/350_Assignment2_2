@@ -37,8 +37,8 @@
             <?php
             require_once 'ContactsFactory.php';
             require_once 'UpdateContact_code.php';
-			session_start();
-            $dsn = $_SESSION['serverName'].";".$_SESSION['database'];
+            session_start();
+            $dsn = $_SESSION['serverName'] . ";" . $_SESSION['database'];
             $username = $_SESSION['userName'];
             $password = $_SESSION['password'];
             $contactId = $_GET['ContactId'];
@@ -54,21 +54,50 @@
 
 
         </div>
-		
-		<script>
-			function updateContact()
-			{
-				var params = gatherInput("update-contact-");
-				params = params + "&transactionType=update";
-				params = params + "&contactId=" + <?php echo $contactId ?>;
-				var callback = function(responseText)
-				{
-					alert(responseText);
-					window.location.assign('ContactPage.php');
-				}
-				alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
-			}
-		</script>
+
+        <script>
+
+            function validateContact()
+            {
+                var firstNameInput = document.getElementById("update-contact-first-name");
+                if(firstNameInput.value === "") 
+                {
+                    var errorDiv = document.createElement("div");
+                    errorDiv.setAttribute("style", "color: red;");
+                    errorDiv.setAttribute("id", "first-name-error");
+                    errorDiv.innerHTML = "First Name is required.";
+                    firstNameInput.parentNode.appendChild(errorDiv);
+                    return false;
+                }
+                else
+                {
+                    var errorDiv = document.getElementById("first-name-error");
+                    if(errorDiv !== null) 
+                    {
+                        errorDiv.parentNode.removeChild(errorDiv);
+                    }
+                    
+                }
+                
+                return true;
+            }
+            
+            function updateContact()
+            {
+                if(!validateContact())
+                    return;
+                
+                var params = gatherInput("update-contact-");
+                params = params + "&transactionType=update";
+                params = params + "&contactId=" + <?php echo $contactId ?>;
+                var callback = function (responseText)
+                {
+                    alert(responseText);
+                    window.location.assign('ContactPage.php');
+                }
+                alert(sendDataOverXMLHttp("MySQL/saveContactToDB.php", params, callback));
+            }
+        </script>
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
