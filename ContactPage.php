@@ -47,22 +47,14 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
-                            data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    </button>
-                    <form class ="navbar-brand" action="AddContact.php">
+                    <form class ="navbar-form navbar-right" action="AddContact.php">
                         <button type="submit" class="btn btn-success">
                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"  style="color:white;"></span>
                         </button>
                     </form>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search...">
-                        </div>                            
-                    </form>
+
                 </div>
             </div>
         </nav>

@@ -146,31 +146,59 @@ require_once 'Contact.php';
             </div>
             <!-- End Modal -->
         </div>
-		
-		<script>
-		/**Operation to save the contact. Takes in information from all of the fields and send it off to the server for validation and saving**/
-			function saveContact()
-			{		
+
+        <script>
+            function validateContact()
+            {
+                var firstNameInput = document.getElementById("add-contact-first-name");
+                if (firstNameInput.value === "")
+                {
+                    var errorDiv = document.createElement("div");
+                    errorDiv.setAttribute("style", "color: red;");
+                    errorDiv.setAttribute("id", "first-name-error");
+                    errorDiv.innerHTML = "First Name is required.";
+                    firstNameInput.parentNode.appendChild(errorDiv);
+                    return false;
+                }
+                else
+                {
+                    var errorDiv = document.getElementById("first-name-error");
+                    if (errorDiv !== null)
+                    {
+                        errorDiv.parentNode.removeChild(errorDiv);
+                    }
+
+                }
+
+                return true;
+            }
 			
-				var params = gatherInput("add-contact-");
-				params = params + "&transactionType=insert";
-				var callback = function(responseText)
-				{
-					alert(responseText);
-					window.location.assign('ContactPage.php');
-				}
-				
-				sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback);
-				
-		
-			}			
-		</script>
+            /**Operation to save the contact. Takes in information from all of the fields and send it off to the server for validation and saving**/
+            function saveContact()
+            {
+                if(!validateContact())
+                    return;
+                
+                var params = gatherInput("add-contact-");
+                params = params + "&transactionType=insert";
+                var callback = function (responseText)
+                {
+                    alert(responseText);
+                    window.location.assign('ContactPage.php');
+                }
+
+                alert(sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback));
+
+
+            }
+        </script>
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		 <script src="js/assignment2_2.js"></script>
+        <script src="js/assignment2_2.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/docs.min.js"></script>
         <!-- custom scrollbar plugin -->

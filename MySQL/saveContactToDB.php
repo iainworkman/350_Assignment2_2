@@ -3,8 +3,8 @@
 has the ContactsFactory do some fancy validation, then selects the task to accomplish.
 This file also lists plenty of debugging information.*/
 
-require_once 'C:/xampp/htdocs/350ass2_2/Contact.php';
-require_once 'C:/xampp/htdocs/350ass2_2/ContactsFactory.php';
+require_once '../Contact.php';
+require_once '../ContactsFactory.php';
 
 /*
 //debugging.
