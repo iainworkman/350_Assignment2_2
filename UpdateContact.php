@@ -95,7 +95,7 @@
                     alert(responseText);
                     window.location.assign('ContactPage.php');
                 }
-                alert(sendDataOverXMLHttp("MySQL/saveContactToDB.php", params, callback));
+                sendDataOverXMLHttp("MySQL/saveContactToDB.php", params, callback);
             }
         </script>
 

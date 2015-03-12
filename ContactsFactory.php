@@ -124,9 +124,7 @@ class ContactsFactory {
 			$statement->bindParam(':date', $contact->getDate());
 			$statement->execute();
 			
-			
-		return "error";
-		return $db->error;
+
 		return null;
 		}
 		catch (PDOException $e)
