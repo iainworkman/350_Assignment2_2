@@ -77,11 +77,11 @@ echo var_dump($contact);
 		
 if (!$error  && $errorMessage == null && $possibleError == null)
 {
-	echo "Successfully saved contact to database.";
+	echo "SERVER: Successfully saved contact to database.";
 }
 else
 {
-	echo "failed to save the contact to the database with the following errors.: ".$errorMessage."\n".$possibleError;
+	echo "SERVER: failed to save the contact to the database with the following errors.: ".$errorMessage."\n".$possibleError;
 }
 
 ?>

@@ -10,7 +10,11 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <a href="MySQL/connectToMySQL.php">MySql Version</a>
-		<a href="MySQL/connectToAzure.php">Azure Version</a>
+        <a href="MySQL/connectToMySQL.php">
+		<img src="resources/MySQL logo.jpg" alt="MySQL Version"  />
+		</a>
+		<a href="MySQL/connectToAzure.php">
+		<img src="resources/azure logo.png" alt="MySQL Version" " />
+		</a>
     </body>
 </html>
