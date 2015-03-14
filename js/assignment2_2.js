@@ -49,7 +49,7 @@ function populateModal() {
 				var region = document.getElementById(frontVariable + "region").value;
 				var country = document.getElementById(frontVariable + "country").value;
 				var postalCode = document.getElementById(frontVariable + "post-code").value;
-
+				var notes = document.getElementById(frontVariable + "notes").value;
 				
 				var params = 
 				"&firstName=" + firstName + 
@@ -65,7 +65,8 @@ function populateModal() {
 				"&town=" + town + 
 				"&region=" + region + 
 				"&country=" + country + 
-				"&postalCode=" + postalCode;
+				"&postalCode=" + postalCode + 
+				"&notes=" + notes;
 				
 				return params;
 	}

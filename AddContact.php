@@ -183,11 +183,14 @@ require_once 'Contact.php';
                 params = params + "&transactionType=insert";
                 var callback = function (responseText)
                 {
-                    alert(responseText);
+                    if (responseText != "")
+					{
+						alert(responseText);
+					}
                     window.location.assign('ContactPage.php');
                 }
 
-                sendDataOverXMLHttp("MySQL/saveContactToDB", params, callback);
+                sendDataOverXMLHttp("MySQL/saveContactToDB.php", params, callback);
 
 
             }
@@ -204,7 +207,7 @@ require_once 'Contact.php';
         <!-- custom scrollbar plugin -->
         <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+       <!-- <script src="assets/js/ie10-viewport-bug-workaround.js"></script> -->
         <!-- JavaScript for assignment 2.2-->
         <script src="js/assignment2_2.js"></script>
         <script>

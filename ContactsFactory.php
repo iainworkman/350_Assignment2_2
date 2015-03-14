@@ -28,7 +28,8 @@ class ContactsFactory {
                     $row['tc_url'], $row['tc_building_number'], 
                     $row['tc_streetname'], $row['tc_townname'], 
                     $row['tc_region'], $row['tc_country'], 
-                    $row['tc_postcode'], $row['tc_birthday'], $row['tc_date']);
+                    $row['tc_postcode'], $row['tc_birthday'], $row['tc_date'],
+					$row['tc_note']);
             $returnArray[$contactId] = $currentContact;
         }
         return $returnArray;
@@ -37,7 +38,7 @@ class ContactsFactory {
     public static function getContact($db, $contactId) {
                 $query = $db->prepare('SELECT tc_contactid, tc_firstname, tc_lastname, tc_company,
 				tc_phone, tc_email, tc_url, tc_building_number, tc_streetname, tc_townname, tc_region, tc_country
-				, tc_postcode, tc_birthday, tc_date FROM t_contacts WHERE tc_contactid = ? ORDER BY tc_lastname');
+				, tc_postcode, tc_birthday, tc_date, tc_note FROM t_contacts WHERE tc_contactid = ? ORDER BY tc_lastname');
         $query->bindParam(1, $contactId, PDO::PARAM_INT);
         
         $query->execute();
@@ -49,9 +50,9 @@ class ContactsFactory {
                     $row['tc_url'], $row['tc_building_number'], 
                     $row['tc_streetname'], $row['tc_townname'], 
                     $row['tc_region'], $row['tc_country'], 
-                    $row['tc_postcode'], $row['tc_birthday'], $row['tc_date']);
+                    $row['tc_postcode'], $row['tc_birthday'], $row['tc_date'], $row['tc_note']);
 					
-					echo $row['tc_townname'];
+					
         }
 		
 		
@@ -64,7 +65,7 @@ class ContactsFactory {
 	$db: The database to save the contact to.
 	return: null if no error occurred, else a string containing the error. 
 	TODO: Validate input somehow. Do with a validate contact function?
-		: Ensure there is not already someone in the databse with the same information?
+		: Ensure there is not already someone in the database with the same information?
 	*/
 	public static function saveContact($db, $contact)
 	{
@@ -88,7 +89,8 @@ class ContactsFactory {
 		 tc_country,
 		 tc_postcode,
 		 tc_birthday,
-		 tc_date
+		 tc_date,
+		 tc_note
 		) 
 		
 		VALUES(
@@ -105,7 +107,8 @@ class ContactsFactory {
 		:country,
 		:postalCode,
 		:birthday,
-		:date);");
+		:date,
+		:notes);");
 		
 			
 			$statement->bindParam(':firstName', $contact->getFirstName());
@@ -120,8 +123,11 @@ class ContactsFactory {
 			$statement->bindParam(':region', $contact->getAddress()->getRegion());
 			$statement->bindParam(':country', $contact->getAddress()->getCountry());
 			$statement->bindParam(':postalCode', $contact->getAddress()->getPostCode());
-			$statement->bindParam(':birthday', $contact->getBirthday());
-			$statement->bindParam(':date', $contact->getDate());
+			$statement->bindParam(':birthday', $contact->getBirthday()->format('Y-m-d H:i:s'));
+			$statement->bindParam(':date', $contact->getDate()->format('Y-m-d H:i:s'));
+			$statement->bindParam(':notes', $contact->getNote());
+			
+
 			$statement->execute();
 			
 
@@ -163,7 +169,8 @@ class ContactsFactory {
 		 tc_country = :country,
 		 tc_postcode = :postalCode,
 		 tc_birthday = :birthday,
-		 tc_date = :date
+		 tc_date = :date,
+		 tc_note = :note
 		 
 		 WHERE 
 		 
@@ -181,9 +188,10 @@ class ContactsFactory {
 			$statement->bindParam(':region', $contact->getAddress()->getRegion());
 			$statement->bindParam(':country', $contact->getAddress()->getCountry());
 			$statement->bindParam(':postalCode', $contact->getAddress()->getPostCode());
-			$statement->bindParam(':birthday', $contact->getBirthday());
-			$statement->bindParam(':date', $contact->getDate());
+			$statement->bindParam(':birthday', $contact->getBirthday()->format('Y-m-d H:i:s'));
+			$statement->bindParam(':date', $contact->getDate()->format('Y-m-d H:i:s'));
 			$statement->bindParam(':contactId', $contact->getContactId());
+			$statement->bindParam(':note', $contact->getNote());
 			$statement->execute();
 	
 
@@ -304,6 +312,11 @@ class ContactsFactory {
 		{
 			$contact->setDate(null);
 		}
+		
+		if ($contact->getNote() =="")
+		{
+			$contact->setNote(null);
+		}
 	}
 	
 	/*Validates the contact information to ensure that nothing inappropriate leaks into the database
@@ -314,12 +327,14 @@ class ContactsFactory {
 	*/
 	public static function validateContact($contact)
 	{
+		
 		$errorMessage = null;
 		
-		if ($contact->getFirstName() == "" || $contact->getFirstName() == null || empty($contact->getFirstName()))
+		if ($contact->getFirstName() == "" ||  $contact->getFirstName() == null)
 		{
 			$errorMessage = $errorMessage."The given first name must not be null or empty.\n";
 		}
+		
 		
 		if (!ContactsFactory::validSQL($contact->getFirstName()))
 		{
@@ -398,24 +413,42 @@ class ContactsFactory {
 			$errorMessage = $errorMessage."The postal code of the given contact contains erroneous characters that are not alphanumeric"."\n";
 		}
 		
+		if (!ContactsFactory::validSQL($contact->getNote()))
+		{
+			$errorMessage = $errorMessage."The note contains invalid characters. \n";
+		}
 		return $errorMessage;
+		
 	}
 	
 	/*Checks to see if the given string contains only appropriate characters for an SQL query.
 	@return true if the string is ok
 			return false if the string is not ok.
-			*/
+			*/ 
 	public static function validSQL($string)
 	{
-		$expression = "/([a-zA-Z]*[0-9]*-*@*\/*\.*)*/i";
-		if ($string == null || $string == "" || empty($string) || preg_match($expression, $string) == 1)
+		$expression = "/[a-z]*[0-9]*/";
+		//$expression = "/*[0-9]*-*@*\/*\.*/";
+		if ($string == null || $string == "")
 		{
 			return true;
 		}
-		else
+		
+		$strlen = strlen( $string );
+		for( $i = 0; $i <= $strlen; $i++ ) 
 		{
-			return false;
+			$char = substr( $string, $i, 1 );
+			if ($char == ";" || $char == '"' || $char == "'")
+			{
+				return false;
+			}
+			if (preg_match($expression, $char) == 0 && $char != "-" && $char != "/" && $char != "@")
+			{
+				return false;
+			}
 		}
-			
+		
+		return true;	
 	}
 }
+?>

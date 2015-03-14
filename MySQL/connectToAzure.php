@@ -4,7 +4,7 @@
 		
 			$servername="sqlsrv:server=tcp:i6lcjk65hs.database.windows.net,1433";
 			$username="ral362@i6lcjk65hs";
-			$password="raptorJesusGod5";
+			$password="RaptorJesusGod5";
 			$dbname="Database=350assignment2";
 			
 			$conn = new PDO($servername+";"+$dbname, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

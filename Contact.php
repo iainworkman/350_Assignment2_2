@@ -13,7 +13,7 @@ class Contact {
             $company = "", $phone = "", $email = "", $url = "", 
             $buildingNumber = "", $streetName = "", $townName = "", 
             $region = "", $country = "", $postCode = "", $birthday = "", 
-            $date="") {
+            $date= "", $note="") {
         $this->contactId_ = $contactId;
         $this->firstName_ = $firstName;
         $this->lastName_ = $lastName;
@@ -21,11 +21,12 @@ class Contact {
         $this->phone_ = $phone;
         $this->email_ = $email;
         $this->url_ = $url;
-        $this->birthday_ = $birthday;
-        $this->date_ = $date;
+        $this->birthday_ = new DateTime($birthday);
+        $this->date_ = new DateTime($date);
         $this->address_ = new Address($buildingNumber, $streetName, $townName, 
                 $region, $country, $postCode);
         $this->hasChanged_ = false;
+		$this->note_=$note;
     }
 
     // Public Functions  
@@ -33,6 +34,16 @@ class Contact {
         return $this->hasChanged_;
     }
     
+	function getNote()
+	{
+		return $this->note_;
+	}
+	
+	function setNote($newNote)
+	{
+		$this->note_=$newNode;
+		
+	}
         function getContactId() {
         return $this->contactId_;
     }
@@ -136,5 +147,7 @@ class Contact {
     private $date_;
     private $address_;
     private $hasChanged_;
+	private $note_;
 
 }
+?>

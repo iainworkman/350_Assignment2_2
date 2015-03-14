@@ -45,7 +45,9 @@
             try {
                 $db = new PDO($dsn, $username, $password, array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
                 $contact = ContactsFactory::getContact($db, $contactId);
+				
                 buildModal($contact);
+				
             } catch (PDOException $e) {
                 echo '<div>' . $e->getMessage() . '</div>';
             }
@@ -92,7 +94,11 @@
                 params = params + "&contactId=" + <?php echo $contactId ?>;
                 var callback = function (responseText)
                 {
-                    alert(responseText);
+					if (responseText!="")
+					{
+						 alert(responseText);
+					}
+                   
                     window.location.assign('ContactPage.php');
                 }
                 sendDataOverXMLHttp("MySQL/saveContactToDB.php", params, callback);
