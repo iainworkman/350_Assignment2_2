@@ -77,7 +77,7 @@ echo var_dump($contact);
 		
 if (!$error  && $errorMessage == null && $possibleError == null)
 {
-	echo "SERVER: Successfully saved contact to database.";
+	
 }
 else
 {
